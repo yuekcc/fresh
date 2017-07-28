@@ -33,6 +33,8 @@ var settings = map[string]string{
 	"log_color_runner":  "green",
 	"log_color_watcher": "magenta",
 	"log_color_app":     "",
+	"cmd_work_dir":      ".",
+	"cmd_args":          "",
 }
 
 var colors = map[string]string{
@@ -143,4 +145,12 @@ func buildDelay() time.Duration {
 	value, _ := strconv.Atoi(settings["build_delay"])
 
 	return time.Duration(value)
+}
+
+func cmdWorkDir() string {
+	return settings["cmd_work_dir"]
+}
+
+func cmdArgv() []string {
+	return strings.Split(settings["cmd_args"], " ")
 }

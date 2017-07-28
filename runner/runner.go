@@ -3,12 +3,20 @@ package runner
 import (
 	"io"
 	"os/exec"
+	"strings"
 )
 
 func run() bool {
 	runnerLog("Running...")
+	runnerLog("Command " + buildPath())
+	runnerLog("Argvments " + strings.Join(cmdArgv(), " "))
+	runnerLog("Working Directory " + cmdWorkDir())
 
-	cmd := exec.Command(buildPath())
+	cmd := &exec.Cmd{
+		Path: buildPath(),
+		Dir:  cmdWorkDir(),
+		Args: cmdArgv(),
+	}
 
 	stderr, err := cmd.StderrPipe()
 	if err != nil {
