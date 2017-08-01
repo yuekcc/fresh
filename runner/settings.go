@@ -35,6 +35,7 @@ var settings = map[string]string{
 	"log_color_app":     "",
 	"cmd_work_dir":      ".",
 	"cmd_args":          "",
+	"watch_root":        ".",
 }
 
 var colors = map[string]string{
@@ -147,10 +148,10 @@ func buildDelay() time.Duration {
 	return time.Duration(value)
 }
 
-func cmdWorkDir() string {
-	return settings["cmd_work_dir"]
-}
-
 func cmdArgv() []string {
 	return strings.Split(settings["cmd_args"], " ")
+}
+
+func watchRoot() string {
+	return settings["watch_root"]
 }

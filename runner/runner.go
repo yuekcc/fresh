@@ -10,11 +10,11 @@ func run() bool {
 	runnerLog("Running...")
 	runnerLog("Command " + buildPath())
 	runnerLog("Argvments " + strings.Join(cmdArgv(), " "))
-	runnerLog("Working Directory " + cmdWorkDir())
+	runnerLog("Working Directory " + root())
 
 	cmd := &exec.Cmd{
 		Path: buildPath(),
-		Dir:  cmdWorkDir(),
+		Dir:  root(),
 		Args: cmdArgv(),
 	}
 
